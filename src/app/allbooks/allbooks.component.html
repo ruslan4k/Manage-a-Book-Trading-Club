@@ -1,38 +1,54 @@
-<div *ngIf="requestedBooks.length > 0" class='offset-1 col-10'>
-  <h1>Your outgoing pending requests:</h1>
-  <div class="row">
-    <div *ngFor="let book of requestedBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
-      <a class="close" (click)="removeRequest(book._id)">&times;</a>
-    </div>
-  </div>
+<div class='btn-group' class='offset-1'>
+  <button class='btn btn-success mb-2' (click)='showOutgoing()'>Outgoing requests: {{outgoingRequestsNum}}</button>
+  <button class='btn btn-primary mb-2' (click)='showIncoming()'>Incoming requests: {{incomingRequestsNum}}</button>
 </div>
 
-<div *ngIf="approvedOutgoingBooks.length > 0" class='offset-1 col-10'>
-  <h1>Your outgoing approved requests:</h1>
-  <div class="row">
-    <div *ngFor="let book of approvedOutgoingBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
-      <a class="close" (click)="removeRequestAUB(book._id)">&times;</a>
+<div *ngIf="!isHiddenOutgoing">
+
+  <div *ngIf="requestedBooks.length > 0" class='offset-1 col-10 mb-5'>
+
+    <div class="row">
+      <div class='list-group-item col-12 mb-2'>Your outgoing pending requests:</div>
+      <div *ngFor="let book of requestedBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
+        <a class="close" (click)="removeRequest(book._id)">&times;</a>
+      </div>
     </div>
   </div>
-</div>
 
-<div *ngIf="incomingRequestedBooks.length > 0" class='offset-1 col-10'>
-  <h1>Incoming requests waiting for your approval:</h1>
-  <div class="row">
-    <div *ngFor="let book of incomingRequestedBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
-      <a class="close" (click)="removeRequestIRB(book._id)">&times;</a>
-      <a class="close" (click)="approveTrade(book._id)">&#10004;</a>
+
+
+
+  <div *ngIf="approvedOutgoingBooks.length > 0" class='offset-1 col-10 mb-5'>
+    <div class="row">
+      <div class='list-group-item col-12 mb-2'>Your outgoing approved requests:</div>
+      <div *ngFor="let book of approvedOutgoingBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
+        <a class="close" (click)="removeRequestAUB(book._id)">&times;</a>
+      </div>
     </div>
   </div>
+
 </div>
 
+<div *ngIf="!isHiddenIncoming">
+
+  <div *ngIf="incomingRequestedBooks.length > 0" class='offset-1 col-10 mb-5'>
+    <div class="row">
+      <div class='list-group-item col-12 mb-2'>Incoming requests waiting for your approval:</div>
+      <div *ngFor="let book of incomingRequestedBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
+        <a class="close" (click)="removeRequestIRB(book._id)">&times;</a>
+        <a class="close" (click)="approveTrade(book._id)">&#10004;</a>
+      </div>
+    </div>
+  </div>
 
 
-<div *ngIf="approvedIncomingBooks.length > 0" class='offset-1 col-10'>
-  <h1>Incoming requests you've approved:</h1>
-  <div class="row">
-    <div *ngFor="let book of approvedIncomingBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
-      <a class="close" (click)="removeRequestAIB(book._id)">&times;</a>
+
+  <div *ngIf="approvedIncomingBooks.length > 0" class='offset-1 col-10 mb-5'>
+    <div class="row">
+        <div class='list-group-item col-12 mb-2'>Incoming requests you've approved:</div>
+      <div *ngFor="let book of approvedIncomingBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
+        <a class="close" (click)="removeRequestAIB(book._id)">&times;</a>
+      </div>
     </div>
   </div>
 </div>

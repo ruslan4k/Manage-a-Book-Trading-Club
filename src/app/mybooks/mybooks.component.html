@@ -1,20 +1,18 @@
-<div class='col-sm-8 offset-sm-2 col-10 offset-1'>
 
+<div class='offset-1'>
 <form class="form-inline mb-2" (ngSubmit)='addBook()'>
   <h1 class='col-12 text-red'></h1>
-  <div class="row">
-    <input type="text" class="form-control col-6 ml-1" [(ngModel)]="book" name="book" placeholder="Enter Book Title">
+
+    <input type="text" class="form-control col-6 col-sm-3" [(ngModel)]="book" name="book" placeholder="Enter Book Title">
     <button class='btn btn-primary mr-3 mb-0' type="submit" [disabled]='!book || loading'>Add Book</button>
-    <div *ngIf='errMsg' class="alert alert-danger col-6 ml-1" role="alert">
+    <div *ngIf='errMsg' class="alert alert-danger col-6" role="alert">
         {{errMsg}}
       </div>
     <i *ngIf = 'loading' id="loading-bar-spinner" class="spinner"><div class="spinner-icon"></div></i>
-  </div>
 </form>
 </div>
+
 <div *ngIf="myBooks" class='row offset-1'>
-
-
   <div *ngFor="let book of myBooks" class="card  bg-light " style="width: 10rem;">
     <img class="card-img-top " height="250" width="200" src={{book.image}} alt="Card image cap">
     <div class="card-body">
