@@ -1,0 +1,50 @@
+<div *ngIf="requestedBooks.length > 0" class='offset-1 col-10'>
+  <h1>Your outgoing pending requests:</h1>
+  <div class="row">
+    <div *ngFor="let book of requestedBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
+      <a class="close" (click)="removeRequest(book._id)">&times;</a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="approvedOutgoingBooks.length > 0" class='offset-1 col-10'>
+  <h1>Your outgoing approved requests:</h1>
+  <div class="row">
+    <div *ngFor="let book of approvedOutgoingBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
+      <a class="close" (click)="removeRequestAUB(book._id)">&times;</a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="incomingRequestedBooks.length > 0" class='offset-1 col-10'>
+  <h1>Incoming requests waiting for your approval:</h1>
+  <div class="row">
+    <div *ngFor="let book of incomingRequestedBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
+      <a class="close" (click)="removeRequestIRB(book._id)">&times;</a>
+      <a class="close" (click)="approveTrade(book._id)">&#10004;</a>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="approvedIncomingBooks.length > 0" class='offset-1 col-10'>
+  <h1>Incoming requests you've approved:</h1>
+  <div class="row">
+    <div *ngFor="let book of approvedIncomingBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
+      <a class="close" (click)="removeRequestAIB(book._id)">&times;</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div *ngIf="allBooks" class='row offset-1'>
+  <div *ngFor="let book of allBooks" class="card  bg-light " style="width: 10rem;">
+    <img class="card-img-top" height="250" width="200" src={{book.image}} alt="Card image cap">
+    <div *ngIf="(book.user != authService.id) && !(book.isRequested)" class="card-body">
+      <button (click)='requestBook(book._id)' class="btn btn-primary">+</button>
+    </div>
+  </div>
+</div>

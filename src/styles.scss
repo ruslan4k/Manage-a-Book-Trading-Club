@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+    height: 100%;
+  
+  body {
+    padding-top: 65px;
+    position: relative;
+    min-height: 100%;
+    background: #005AA7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFDE4, #005AA7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    padding-bottom: 90px;
+  }
+   
+  }
+  
+  .footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+  }
+

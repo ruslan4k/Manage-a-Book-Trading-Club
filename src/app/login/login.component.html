@@ -1,0 +1,48 @@
+
+
+  <div class = "col-10 col-md-4 offset-1 offset-md-4 mt-5">
+    <h1 class='text-white text-center'>Sign In</h1>
+<div >
+<div class="card pl-4 pr-4 pb-4 pt-4">
+  <div class="card-body">
+          <div id="social" class='row justify-content-center text-center'>
+    <a href="/auth/github" target='_self' class="btn btn-lg btn-github text-white col-1 text-center  d-flex justify-content-center align-items-center">
+       
+            <i class="fa fa-github fa-lg"></i>
+    </a>
+        <a  href="/auth/twitter" target='_self' class="btn btn-lg btn-twitter text-white col-1  d-flex justify-content-center align-items-center">
+       
+            <i class="fa fa-twitter fa-lg"></i>
+    </a>
+            <a href="/auth/facebook" target='_self' class="btn btn-lg btn-facebook text-white col-1  d-flex justify-content-center align-items-center">
+        
+            <i class="fa fa-facebook fa-lg"></i>
+    </a>
+                <a href="/auth/google"target='_self' class="btn btn-lg btn-google text-white col-1  d-flex justify-content-center align-items-center">
+       
+            <i class="fa fa-google fa-lg"></i>
+    </a>
+</div>
+<p class='text-center mb-0 mt-2'>or</p>
+    <div *ngIf="errMess" class="alert alert-danger alert-dismissable" role="alert">{{errMess}}
+    <a class="close" (click)="removeAlert()">&times;</a>
+    </div>
+<form novalidate [formGroup]='loginForm' (ngSubmit)="onSubmit()">
+  <div class="{{(formErrors.username) ? 'form-group has-danger' : 'form-group'}}">
+    <label>Username/Email</label>
+    <input type="text" formControlName="username" class="form-control"  placeholder="Enter username or email" 
+    class="{{(formErrors.username) ? 'form-control form-control-danger' : 'form-control form-control-danger'}}" required>
+     <div class="form-control-feedback">{{formErrors.username}}</div>
+  </div>
+  <div class="pb-2" class="{{(formErrors.password) ? 'form-group has-danger' : 'form-group'}}">
+    <label>Password</label>
+    <input type="password" formControlName="password" class="form-control"  placeholder="Enter Password" 
+    class="{{(formErrors.password) ? 'form-control form-control-danger' : 'form-control form-control-danger'}}">
+     <div class="form-control-feedback">{{formErrors.password}}</div>
+  </div>
+    <button type="submit" class="btn btn-primary btn-block" [disabled] = loading>{{submit}}</button>
+</form>
+  </div>
+</div>
+  </div>
+  </div>
