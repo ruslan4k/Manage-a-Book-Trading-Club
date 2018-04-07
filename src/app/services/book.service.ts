@@ -42,7 +42,7 @@ export class BookService {
   };
 
   getMyBooks(): Observable<any> {
-    return this.http.get(baseURL + 'mybooks', { withCredentials: true })
+    return this.http.get(baseURL + 'mybookss', { withCredentials: true })
       .catch(error => {
         return Observable.throw(error.error.status);
       });

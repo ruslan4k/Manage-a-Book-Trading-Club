@@ -143,7 +143,7 @@ module.exports = function (app, passport) {
 
 
 
-    app.get('/mybooks', cors.corsWithOptions, isLoggedIn, function (req, res) {
+    app.get('/mybookss', cors.corsWithOptions, isLoggedIn, function (req, res) {
         Book.find({ 'user': req.user._id }, function (err, books) {
             if (err) {
                 console.log(err);
