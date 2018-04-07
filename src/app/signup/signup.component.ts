@@ -128,9 +128,11 @@ export class SignupComponent implements OnInit {
       this.authService.signUp(this.signupForm.value)
         .subscribe(
           data => {
+            console.log(data)
             this.authService.sendUsername(this.signupForm.value.username)
             this.authService.username2 = this.signupForm.value.username;
-            this.authService = data.user.id
+            this.authService.id = data.user.id;
+            this.router.navigate(['/mybooks']);
           },
           error => {
             this.errMess = error;

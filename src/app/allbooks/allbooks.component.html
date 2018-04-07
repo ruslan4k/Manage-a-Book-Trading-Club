@@ -8,7 +8,7 @@
   <div *ngIf="requestedBooks.length > 0" class='offset-1 col-10 mb-5'>
 
     <div class="row">
-      <div class='list-group-item col-12 mb-2'>Your outgoing pending requests:</div>
+      <div class='list-group-item col-12 mb-2'><h3>Your outgoing pending requests:</h3></div>
       <div *ngFor="let book of requestedBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
         <a class="close" (click)="removeRequest(book._id)">&times;</a>
       </div>
@@ -20,7 +20,7 @@
 
   <div *ngIf="approvedOutgoingBooks.length > 0" class='offset-1 col-10 mb-5'>
     <div class="row">
-      <div class='list-group-item col-12 mb-2'>Your outgoing approved requests:</div>
+      <div class='list-group-item col-12 mb-2'><h3>Your outgoing approved requests:</h3></div>
       <div *ngFor="let book of approvedOutgoingBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
         <a class="close" (click)="removeRequestAUB(book._id)">&times;</a>
       </div>
@@ -33,7 +33,7 @@
 
   <div *ngIf="incomingRequestedBooks.length > 0" class='offset-1 col-10 mb-5'>
     <div class="row">
-      <div class='list-group-item col-12 mb-2'>Incoming requests waiting for your approval:</div>
+      <div class='list-group-item col-12 mb-2'><h3>Incoming requests waiting for your approval:</h3></div>
       <div *ngFor="let book of incomingRequestedBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
         <a class="close" (click)="removeRequestIRB(book._id)">&times;</a>
         <a class="close" (click)="approveTrade(book._id)">&#10004;</a>
@@ -45,7 +45,7 @@
 
   <div *ngIf="approvedIncomingBooks.length > 0" class='offset-1 col-10 mb-5'>
     <div class="row">
-        <div class='list-group-item col-12 mb-2'>Incoming requests you've approved:</div>
+        <div class='list-group-item col-12 mb-2'><h3>Incoming requests you've approved:</h3></div>
       <div *ngFor="let book of approvedIncomingBooks" class='list-group-item col-6 col-sm-4 mb-1'>{{book.title}}
         <a class="close" (click)="removeRequestAIB(book._id)">&times;</a>
       </div>

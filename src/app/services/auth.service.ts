@@ -39,9 +39,6 @@ export class AuthService {
   signUp(user: any): Observable<any> {
     return this.http.post(baseURL + 'signup',
       { "username": user.username, "password": user.password, "email": user.email }, { withCredentials: true })
-      .map(res => {
-        this.setUsername(user.username)
-      })
       .catch(error => {
         return Observable.throw(error.error.status);
       });

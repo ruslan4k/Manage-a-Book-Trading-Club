@@ -26,6 +26,7 @@ export class BookService {
     return this.http.post(baseURL + 'book', { book: book }, { withCredentials: true })
       .catch(error => {
         if (error.status == 403) {
+          alert('Please, log in or sign up')
           this.authService.setUsername(undefined);
           return this.router.navigate(['/login']);
         }
@@ -78,6 +79,11 @@ export class BookService {
   approveTrade(id): Observable<any> {
     return this.http.post(baseURL + 'approveTrade/', { id: id }, { withCredentials: true })
       .catch(error => {
+        if (error.status == 403) {
+          alert('Please, log in or sign up')
+          this.authService.setUsername(undefined);
+          return this.router.navigate(['/login']);
+        }
         return Observable.throw(error.error.status);
       });
   };
@@ -87,6 +93,11 @@ export class BookService {
   deleteBook(id): Observable<any> {
     return this.http.delete(baseURL + 'book/' + id, { withCredentials: true })
       .catch(error => {
+        if (error.status == 403) {
+          alert('Please, log in or sign up')
+          this.authService.setUsername(undefined);
+          return this.router.navigate(['/login']);
+        }
         return Observable.throw(error.error.status);
       });
   };
@@ -95,6 +106,7 @@ export class BookService {
     return this.http.get(baseURL + 'book/' + id, { withCredentials: true })
       .catch(error => {
         if (error.status == 403) {
+          alert('Please, log in or sign up')
           this.authService.setUsername(undefined);
           return this.router.navigate(['/login']);
         }
@@ -106,6 +118,7 @@ export class BookService {
     return this.http.post(baseURL + 'remove_request', { id: id }, { withCredentials: true })
       .catch(error => {
         if (error.status == 403) {
+
           this.authService.setUsername(undefined);
           return this.router.navigate(['/login']);
         }

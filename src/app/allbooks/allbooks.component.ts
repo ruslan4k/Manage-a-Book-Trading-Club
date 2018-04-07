@@ -134,6 +134,7 @@ export class AllbooksComponent implements OnInit {
           this.outgoingRequestsNum += 1
         },
         error => {
+          alert(error)
           console.log(error);
         });
   }

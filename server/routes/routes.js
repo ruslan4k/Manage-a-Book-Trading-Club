@@ -56,7 +56,6 @@ module.exports = function (app, passport) {
             }
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
-            console.log('pendingBooks: ', books)
             return res.json(books);
         });
     })
@@ -69,7 +68,6 @@ module.exports = function (app, passport) {
             }
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
-            console.log('approvedOutgoingBooks: ', books)
             return res.json(books);
         });
     })
@@ -97,7 +95,6 @@ module.exports = function (app, passport) {
             }
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
-            console.log('approvedBooks: ', books)
             return res.json(books);
         });
     })
@@ -171,7 +168,6 @@ module.exports = function (app, passport) {
             }
             let json = JSON.parse(body);
             if (json.items && json.items[0].volumeInfo && json.items[0].volumeInfo.imageLinks) {
-                console.log(json.items[0].volumeInfo);
                 let title = json.items[0].volumeInfo.title;
                 let link = json.items[0].volumeInfo.imageLinks.smallThumbnail;
                 let user = req.user._id
@@ -206,9 +202,14 @@ module.exports = function (app, passport) {
                 return res.json({ success: false, status: err })
             }
             if (book.isRequested) {
-                res.statusCode = 403;
+                res.statusCode = 404;
                 res.setHeader('Content-Type', 'application/json');
-                return res.json({ success: false, status: "Sorry, this Book can't be traded, it's already requested by someone else." });
+                return res.json({ success: false, status: "Sorry, this Book cannot be traded, it's already requested by someone else." });
+            }
+            if (book.user == req.user._id) {
+                res.statusCode = 404;
+                res.setHeader('Content-Type', 'application/json');
+                return res.json({ success: false, status: "Sorry, this Book cannot be traded, it's your book." });
             }
             book.requestedUser = req.user._id;
             book.isRequested = true;
