@@ -22,7 +22,7 @@ db.once('open', function() {
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.use(favicon(path.join(appRoot.path, 'dist2/favicon.ico')));
+app.use(favicon(path.join(appRoot.path, 'dist/favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,7 +38,7 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
 
-app.use(express.static(path.join(appRoot.path, 'dist2')));
+app.use(express.static(path.join(appRoot.path, 'dist')));
 
 require('./routes/routes.js')(app, passport); 
 

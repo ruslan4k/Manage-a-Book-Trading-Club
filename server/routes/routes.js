@@ -159,7 +159,6 @@ module.exports = function (app, passport) {
 
     app.post('/book', cors.corsWithOptions, isLoggedIn, function (req, res) {
         let book = req.body.book;
-        console.log(book);
         const url = "https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + process.env.BOOK_API;
         request.get(url, (error, response, body) => {
             if (error) {
@@ -347,7 +346,7 @@ module.exports = function (app, passport) {
 
 
     app.get('*', cors.corsWithOptions, (req, res) => {
-        res.sendFile(path.join(appRoot.path, 'dist2/index.html'));
+        res.sendFile(path.join(appRoot.path, 'dist/index.html'));
     });
 
 }
