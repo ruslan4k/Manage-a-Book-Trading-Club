@@ -19,6 +19,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {AuthService} from './services/auth.service';
 import {BookService} from './services/book.service';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
@@ -30,7 +31,8 @@ import {BookService} from './services/book.service';
     LoginComponent,
     SignupComponent,
     AllbooksComponent,
-    MybooksComponent
+    MybooksComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

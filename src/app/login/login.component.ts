@@ -113,9 +113,9 @@ export class LoginComponent implements OnInit {
         .subscribe(
           data => {
             console.log(data.user)
-            this.authService.sendUsername(this.loginForm.value.username)
-            this.authService.username2 = this.loginForm.value.username;
-            this.authService.id = data.user.id
+            this.authService.sendUsername(data.user.name);
+            this.authService.username2 = data.user.name;
+            this.authService.id = data.user.id;
             this.router.navigate(['/mybooks']);
           },
           error => {

@@ -4,6 +4,7 @@ const cors = require('./cors');
 var http = require('https');
 const request = require("request");
 var Book = require('../models/books');
+var User = require('../models/users');
 
 require('dotenv').load();
 
@@ -227,7 +228,35 @@ module.exports = function (app, passport) {
     });
 
     app.get('/username', cors.corsWithOptions, isLoggedIn, function (req, res) {
+        res.statusCode = 200;
         return res.json({ user: { name: req.user.name, id: req.user._id } })
+    });
+
+    app.get('/userInfo', cors.corsWithOptions, isLoggedIn, function (req, res) {
+        res.statusCode = 200;
+        return res.json({ name: req.user.name, city: req.user.city, state: req.user.state })
+    });
+
+    app.post('/userInfo', cors.corsWithOptions, isLoggedIn, function (req, res) {
+        User.findById(req.user._id, function (err, user) {
+            if (err) {
+                console.log(err);
+                return next(err);
+            }
+            user.state = req.body.state;
+            user.city = req.body.city;
+            user.name = req.body.name;
+            user.save()
+                .then((user) => {
+                    res.statusCode = 200;
+                    return res.json({ name: user.name, city: user.city, state: user.state })
+                }, (err) => {
+                    console.log(err);
+                    return next(err);
+                });
+
+        })
+
     });
 
 
@@ -346,7 +375,7 @@ module.exports = function (app, passport) {
 
 
     app.get('*', cors.corsWithOptions, (req, res) => {
-        res.sendFile(path.join(appRoot.path, 'dist/index.html'));
+        res.sendFile(path.join(appRoot.path, 'dist2/index.html'));
     });
 
 }

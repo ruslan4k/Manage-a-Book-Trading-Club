@@ -64,6 +64,32 @@ export class AuthService {
     return this.username.asObservable();
   }
 
+  getUsernInfo(): Observable<any> {
+    return this.http.get(baseURL + 'userInfo', { withCredentials: true })
+      .catch(error => {
+        if (error.status == 403) {
+          alert('Please, log in or sign up');
+          this.setUsername(undefined);
+          return this.router.navigate(['/login']);
+        }
+        return Observable.throw(error.error.status);
+      });
+  }
+
+
+  updateInfo(info): Observable<any> {
+    return this.http.post(baseURL + 'userInfo', info, { withCredentials: true })
+      .catch(error => {
+        if (error.status == 403) {
+          alert('Please, log in or sign up');
+          this.setUsername(undefined);
+          return this.router.navigate(['/login']);
+        }
+        return Observable.throw(error.error.status);
+      });
+  }
+
+
   fetchUsername(): Observable<any> {
     return this.http.get(baseURL + 'username', { withCredentials: true })
       .catch(error => {

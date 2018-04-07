@@ -1,33 +1,34 @@
-
 <nav class="navbar navbar-expand-lg fixed-top bg-primary navbar-dark">
-  <button class="navbar-toggler" type="button"   (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
+  <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
     <span class="navbar-toggler-icon"></span>
   </button>
-  
+
   <div class="navbar-collapse " [ngbCollapse]="!isCollapsed">
-    
+
     <ul class="navbar-nav mr-auto">
-        <a class="navbar-brand text-white">Book Club</a>
-        <li class="nav-item">
-          <a class="nav-link " routerLink="/allbooks" routerLinkActive="active">All Books</a>
-        </li>
+      <a class="navbar-brand text-white">Book Club</a>
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/allbooks" routerLinkActive="active">All Books</a>
+      </li>
       <li *ngIf="username" class="nav-item">
         <a class="nav-link" routerLink="/mybooks" routerLinkActive="active">My Books</a>
       </li>
     </ul>
     <ul class="navbar-nav   ml-auto">
-      
+
       <a *ngIf="username" class="navbar-brand text-white">{{username}}</a>
-       <li *ngIf="username" class="nav-item">
-      <a class="nav-link" (click)="logOut()">Logout</a>
-     </li>
-                    <li class="nav-item">
+      <li *ngIf="username" class="nav-item">
+        <a routerLink="/settings" routerLinkActive="active" class="nav-link">Settings</a>
+      </li>
+      <li *ngIf="username" class="nav-item">
+        <a class="nav-link" (click)="logOut()">Logout</a>
+      </li>
+      <li class="nav-item">
         <a *ngIf="!username" class="nav-link" routerLink="/signup" routerLinkActive="active">Sign Up</a>
       </li>
-              <li class="nav-item">
+      <li class="nav-item">
         <a *ngIf="!username" class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
       </li>
-        </ul>
+    </ul>
   </div>
 </nav>
-
