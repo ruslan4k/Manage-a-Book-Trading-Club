@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('voting-app App', () => {
+describe('manage_a_book_trading_club App', () => {
   let page: AppPage;
 
   beforeEach(() => {
