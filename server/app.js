@@ -42,6 +42,11 @@ app.use(express.static(path.join(appRoot.path, 'dist2')));
 
 require('./routes/routes.js')(app, passport); 
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(appRoot.path, "dist2/index.html"));
+});
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
