@@ -1,4 +1,4 @@
-# Manage-a-Book-Trading-Club (FreeCodeCamp project)
+# Manage-a-Book-Trading-Club  (<a href='https://learn.freecodecamp.org/coding-interview-prep/take-home-projects/manage-a-book-trading-club/'>FreeCodeCamp project</a>)
 
 Full stack JavaScript app built with MEAN stack.
 
